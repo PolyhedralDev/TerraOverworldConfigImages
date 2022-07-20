@@ -13,6 +13,6 @@ jobs:
       - name: Dispatch sync # Signal to main repository to sync with this one
         uses: peter-evans/repository-dispatch@v2
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.POLYBOT }}
           repository: PolyhedralDev/TerraOverworldConfig
           event-type: Sync Images
