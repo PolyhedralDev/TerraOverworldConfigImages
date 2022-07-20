@@ -1,0 +1,18 @@
+name: Sync Parent Repo
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+      
+      - name: Dispatch sync # Signal to main repository to sync with this one
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          token: ${{ secrets.POLYBOT }}
+          repository: PolyhedralDev/TerraOverworldConfig
+          event-type: Sync Images
